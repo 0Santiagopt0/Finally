@@ -19,7 +19,7 @@ Single Docker container serving everything on port 8000:
 
 - **Frontend**: Next.js (static export) with TypeScript and Tailwind CSS
 - **Backend**: FastAPI (Python/uv) with SSE streaming
-- **Database**: SQLite with lazy initialization
+- **Database**: SQLite with startup initialization
 - **AI**: LiteLLM → OpenRouter (Cerebras inference) with structured outputs
 - **Market data**: Built-in GBM simulator (default) or Massive API (optional)
 
@@ -42,7 +42,8 @@ docker run -v finally-data:/app/db -p 8000:8000 --env-file .env finally
 | Variable | Required | Description |
 |---|---|---|
 | `OPENROUTER_API_KEY` | Yes | OpenRouter API key for AI chat |
-| `MASSIVE_API_KEY` | No | Massive (Polygon.io) key for real market data; omit to use simulator |
+| `MASSIVE_API_KEY` | No | Massive API key for real market data; omit to use simulator |
+| `LLM_MODEL` | No | Override default LLM model (default: `openrouter/openai/gpt-oss-120b`) |
 | `LLM_MOCK` | No | Set `true` for deterministic mock LLM responses (testing) |
 
 ## Project Structure
